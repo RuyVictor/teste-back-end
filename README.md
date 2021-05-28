@@ -1,24 +1,40 @@
-# Teste para candidatos à vaga de desenvolvedor Back-end NodeJS
+<h1 align="center">
+    Teste de Backend
+</h1>
 
-> Todos os interessados que fizerem pull request e enviarem o curriculo para **felipe.alves@fbmobile.com.br** com assunto **NOME DA VAGA + NOME DA EMPRESA** receberão um feedback.
+<p align="center">
+ <img src="https://img.shields.io/static/v1?label=Version&message=1.0.0&color=ffeb3b&labelColor=000000" alt="PRs welcome!" />
+<br>
 
-## CRIAR UM CRUD
-CRUD significa Criar, Ler, Atualizar e Excluir . Quais são as operações básicas que um aplicativo da web simples deve realizar.
+#Ferramentas
+####🚀 Produção:
+- [NestJS](https://nestjs.com/)
+- [MongoDB](https://www.mongodb.com)
 
- ## Iniciando Teste
+####👷 Teste e documentação:
+- [Insomnia](https://insomnia.rest/)
+- [Swagger](https://swagger.io/)
 
-Para iniciar o teste, faça um fork deste repositório.
+#Projeto
 
-1. Baixe o fork em sua maquina;
-2. Crie seu CRUD, necessário conter 10 campos.
-3. Utilizar plugin de sua escolha parar gerar a documentação da API, e informar no readme.md como gerar ela.
-4. Adicionar no seu readme.md o link da colletciton no postman
+Foi proposto pela Teddy Soluções como um teste de capacitação para o recrutamento de novos desenvolvedores backend, o projeto em si demonstra as quatro operações básicas, criar, ler, atualizar e deletar sendo feitas em um banco de dados Cloud.
 
-## BANCO DE DADOS 
-Utilizar um banco de dados Cloud para facilitar nossos teste.
-Caso não conheça nenhum segue uma indicação https://mlab.com/
+#Documentação
 
-* **Importante:** Usamos o mesmo teste para todos os níveis de front: **júnior**, **pleno** ou **sênior**, mas procuramos adequar nossa exigência na avaliação com cada um desses níveis sem, por exemplo, exigir excelência de quem está começando :-)
+A documentação é gerada automaticamente apartir das tags definidas por decorators, utilizando a dependência do Swagger no NestJS, basta iniciar o projeto com o comando```yarn dev```, acessar a seguinte URL: http://localhost:3000/api-json, copiar o código em JSON, em seguida acessar a página do Swagger Editor em https://editor.swagger.io e colar o código no editor, deverá aparescer um prompt```Would you like to convert your JSON into YAML?```, selecione OK, pronto! agora é só salvar a versão cliente na linguagem de sua escolha.
 
+#Instalação
+1. #### Clonando o repositório
+```git clone https://github.com/RuyVictor/teste-back-end.git```
 
-**Boa sorte!**
+2. #### Acessando a pasta do projeto
+```cd teste-back-end```
+
+3. #### Instalando as dependências
+```yarn install```
+
+4. #### Iniciando o projeto
+```yarn dev```
+
+#Collection
+- #### Postman [acesse aqui](https://documenter.getpostman.com/view/15988720/TzXzCc5N)
