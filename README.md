@@ -37,4 +37,4 @@ A documentação é gerada automaticamente apartir das tags definidas por decora
 ```yarn dev```
 
 # Collection
-- #### Postman [acesse aqui](https://documenter.getpostman.com/view/15988720/TzXzCc5N)
+- #### Postman [acesse aqui](https://www.getpostman.com/collections/f64dce893779915333de)
