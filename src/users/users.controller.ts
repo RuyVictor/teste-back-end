@@ -15,6 +15,7 @@ import { UpdateUserDto } from "./dto/update-user.dto";
 import { ApiResponse } from '@nestjs/swagger';
 import { Response } from 'express';
 
+import { NotFoundException } from "../errors/not-found.exception";
 
 @Controller("users")
 export class UsersController {
@@ -23,41 +24,57 @@ export class UsersController {
   @Post("create")
   @HttpCode(201)
   @ApiResponse({ status: 201, description: 'User has been successfully created.'})
-  create(@Body() createUserDto: CreateUserDto, @Res() res: Response) {
-    const createdUser = this.usersService.create(createUserDto);
-    if (createdUser) {
-      res.status(201).json({message: 'User has been successfully created.'});
+  async create(@Body() createUserDto: CreateUserDto, @Res() res: Response) {
+    const createdUser = await this.usersService.create(createUserDto);
+
+    if (!createdUser) {
+      throw new NotFoundException;
     }
+
+    return res.status(201).json({message: 'User has been successfully created.'});
   }
 
   @Get("find")
-  findAll() {
-    return this.usersService.findAll();
+  async findAll() {
+    return await this.usersService.findAll();
   }
 
   @Get("find/:id")
   @ApiResponse({ status: 404, description: 'User not found'})
-  findOne(@Param("id") id: string) {
-    return this.usersService.findOne(id);
+  async findOne(@Param("id") id: string) {
+
+    const foundUser = await this.usersService.findOne(id);
+
+    if (!foundUser) {
+      throw new NotFoundException;
+    }
+
+    return foundUser;
   }
 
   @Patch("update/:id")
   @ApiResponse({ status: 200, description: 'User has been successfully updated.'})
   @ApiResponse({ status: 404, description: 'User not found'})
-  update(@Param("id") id: string, @Body() updateUserDto: UpdateUserDto, @Res() res: Response) {
-    const updatedUser = this.usersService.update(id, updateUserDto);
-    if (updatedUser) {
-      res.status(200).json({message: 'User has been successfully updated.'});
+  async update(@Param("id") id: string, @Body() updateUserDto: UpdateUserDto, @Res() res: Response) {
+    const updatedUser = await this.usersService.update(id, updateUserDto);
+    
+    if (!updatedUser) {
+      throw new NotFoundException;
     }
+
+    return res.status(200).json({message: 'User has been successfully updated.'});
   }
 
   @Delete("delete/:id")
   @ApiResponse({ status: 200, description: 'User has been successfully deleted.'})
   @ApiResponse({ status: 404, description: 'User not found'})
-  remove(@Param("id") id: string, @Res() res: Response) {
-    const deletedUser = this.usersService.remove(id);
-    if (deletedUser) {
-      res.status(200).json({message: 'User has been successfully deleted.'});
+  async remove(@Param("id") id: string, @Res() res: Response) {
+    const deletedUser = await this.usersService.remove(id);
+    
+    if (!deletedUser) {
+      throw new NotFoundException;
     }
+    
+    return res.status(200).json({message: 'User has been successfully deleted.'});
   }
 }
